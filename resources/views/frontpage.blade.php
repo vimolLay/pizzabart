@@ -10,7 +10,7 @@
                     <div class="card-body">
 
                         <form action="{{ route('frontpage') }}" method="get">
-                            <a href="/"> <button class="btn btn-danger" type="submit"> Back </button> </a>
+                            <a href="/" class="list-group-item list-group-item-action"> back </a>
                             <input type="submit" class="list-group-item list-group-item-action" value="Vegetarian"
                                 name="category">
                             <input type="submit" class="list-group-item list-group-item-action" value="Nonvegetarian"
@@ -28,7 +28,8 @@
 
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Pizza</div>
+                    <div class="card-header">({{ count($pizzas) }}) Pizzas
+                    </div>
 
                     <div class="card-body">
                         <div class="row">
