@@ -25,12 +25,20 @@ Route::post('/order/store', [App\Http\Controllers\FrontendController::class, 'st
 
 
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function() {
+    // Pizza
     Route::get('/pizza', [App\Http\Controllers\PizzaController::class, 'index'])->name('pizza.index');
     Route::get('/pizza/create', [App\Http\Controllers\PizzaController::class, 'create'])->name('pizza.create');
     Route::post('/pizza/store', [App\Http\Controllers\PizzaController::class, 'store'])->name('pizza.store');
     Route::get('/pizza/{id}/edit', [App\Http\Controllers\PizzaController::class, 'edit'])->name('pizza.edit');
     Route::put('/pizza/{id}/update', [App\Http\Controllers\PizzaController::class, 'update'])->name('pizza.update');
     Route::delete('/pizza/{id}/delete', [App\Http\Controllers\PizzaController::class, 'destroy'])->name('pizza.destroy');
+    //Drinks
+    Route::get('/drink', [App\Http\Controllers\DrinkController::class, 'index'])->name('drink.index');
+    Route::get('/drink/create', [App\Http\Controllers\DrinkController::class, 'create'])->name('drink.create');
+    Route::post('/drink/store', [App\Http\Controllers\DrinkController::class, 'store'])->name('drink.store');
+
+
+    
 
     //user order
     Route::get('/user/order', [App\Http\Controllers\UserOrderController::class, 'index'])->name('user.order');

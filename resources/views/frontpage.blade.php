@@ -28,7 +28,7 @@
 
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">({{ count($pizzas) }}) Pizzas
+                    <div class="card-header">({{ count($pizzas) }}) Foods & Drinks
                     </div>
 
                     <div class="card-body">

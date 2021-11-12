@@ -1,0 +1,6 @@
+php artisan make:controller name -r
+php artisan make:migration name -m (jenh in database and mobel)
+roch tver view (blade)
+
+php artisan make:Request name
+php artisan storage:link (to link image to storage)

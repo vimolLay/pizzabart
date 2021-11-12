@@ -73,7 +73,8 @@
                                     @if (auth()->user()->is_admin == 1)
                                         <a href="{{ route('customers') }}" class="dropdown-item">
                                             {{ __('All Customers') }}</a>
-
+                                        <a href="{{ route('pizza.index') }}" class="dropdown-item">
+                                            {{ __('Dashboard') }}</a>
 
                                         <a href="{{ route('user.order') }}" class="dropdown-item">
                                             {{ __('User Order') }}</a>
@@ -83,7 +84,7 @@
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                                                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
