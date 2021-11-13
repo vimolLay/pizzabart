@@ -36,6 +36,10 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function() {
     Route::get('/drink', [App\Http\Controllers\DrinkController::class, 'index'])->name('drink.index');
     Route::get('/drink/create', [App\Http\Controllers\DrinkController::class, 'create'])->name('drink.create');
     Route::post('/drink/store', [App\Http\Controllers\DrinkController::class, 'store'])->name('drink.store');
+    Route::get('/drink/{id}/edit', [App\Http\Controllers\DrinkController::class, 'edit'])->name('drink.edit');
+    Route::put('/drink/{id}/update', [App\Http\Controllers\DrinkController::class, 'update'])->name('drink.update');
+    Route::delete('/drink/{id}/delete', [App\Http\Controllers\DrinkController::class, 'destroy'])->name('drink.destroy');
+
 
 
     

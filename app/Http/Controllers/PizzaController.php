@@ -84,24 +84,25 @@ class PizzaController extends Controller
      */
     public function update(PizzaUpdateRequest $request, $id)
     {
-        $pizza = Pizza::find($id);
-        if($request->has('image')) {
-            $path = $request -> image -> store('public/pizza');
-        }
-        else{
-            $path = $pizza->image;
-        }
-        $pizza = new Pizza;
-        $pizza->name = $request->name;
-        $pizza->description = $request->description;
-        $pizza->small_pizza_price = $request -> small_pizza_price;
-        $pizza->medium_pizza_price = $request ->medium_pizza_price;
-        $pizza->large_pizza_price = $request ->large_pizza_price;
-        $pizza->category = $request ->category;
-        $pizza->image = $path;
-        $pizza->save();
-        return redirect()->route('pizza.index')->with('message','Pizza updated successfully!');
-
+       $pizza = Pizza::find($id);
+        
+       if ($request->has('image')){
+           $path = $request->image->store('public/pizza');
+       }else{
+         $path = $pizza->image;
+       }
+ 
+       $pizza->fill($request->input());
+       $pizza->name = $request->name;
+       $pizza->description = $request->description;
+       $pizza->small_pizza_price = $request->small_pizza_price;
+       $pizza->medium_pizza_price = $request->medium_pizza_price;
+       $pizza->large_pizza_price = $request->large_pizza_price;
+       $pizza->category = $request->category;
+       $pizza->image = $path;
+       $pizza->save();
+ 
+       return redirect()->route('pizza.index')->with('message','Pizza updated successfully!');
     }
 
     /**

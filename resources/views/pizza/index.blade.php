@@ -5,38 +5,23 @@
         <div class="row justify-content-center">
             <div class="col-md-2">
                 <div class="card">
-                    <div class="card-header"> Menu</div>
+                    <div class="card-header">Menu</div>
                     <div class="card-body">
                         <ul class="list-group">
-                            <a href="{{ route('pizza.index') }}" class="list-group-item list-group-item-action"> View
-                                Pizza</a>
-                            <a href="{{ route('pizza.create') }}" class="list-group-item list-group-item-action">Create
-                                Pizza
-                            </a>
-                            <a href="{{ route('user.order') }}" class="list-group-item list-group-item-action"> User Order
-                            </a>
+                            <a href="{{ route('pizza.index') }}" class="list-group-item list-group-item-action">View</a>
+                            <a href="{{ route('pizza.create') }}" class="list-group-item list-group-item-action">Create</a>
+                            <a href="{{ route('user.order') }}" class="list-group-item list-group-item-action">User
+                                order</a>
+
                         </ul>
                     </div>
                 </div>
-                @if (count($errors) > 0)
-                    <div class="card mt-5">
-                        <div class="card-body">
-                            <div class="alert alert-danger">
-                                @foreach ($errors->all() as $error)
-                                    <p> {{ $error }} </p>
-                                @endforeach
-                            </div>
-
-                        </div>
-                    </div>
-                @endif
             </div>
-
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">All Pizza
-                        <a href="{{ route('pizza.create') }}"><button class="btn btn-success" style="float: right">Add
-                                Pizza</button>
+                        <a href="{{ route('pizza.create') }}">
+                            <button class="btn btn-success" style="float: right">Add pizza</button>
                         </a>
                     </div>
 
@@ -54,9 +39,9 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Category</th>
-                                    <th scope="col">S.Price</th>
-                                    <th scope="col">M.Price</th>
-                                    <th scope="col">L.Price</th>
+                                    <th scope="col">S.price</th>
+                                    <th scope="col">M.price</th>
+                                    <th scope="col">L.price</th>
                                     <th scope="col"></th>
                                     <th scope="col"></th>
                                 </tr>
@@ -69,34 +54,32 @@
                                             <td><img src="{{ Storage::url($pizza->image) }}" width="80"></td>
                                             <td>{{ $pizza->name }}</td>
                                             <td>{{ $pizza->description }}</td>
-                                            <td>{{ $pizza->Category }}</td>
+                                            <td>{{ $pizza->category }}</td>
                                             <td>{{ $pizza->small_pizza_price }}</td>
                                             <td>{{ $pizza->medium_pizza_price }}</td>
                                             <td>{{ $pizza->large_pizza_price }}</td>
                                             <td><a href="{{ route('pizza.edit', $pizza->id) }}"><button
                                                         class="btn btn-primary">Edit</button></a></td>
                                             <td><button class="btn btn-danger" data-toggle="modal"
-                                                    data-target="#exampleModal{{ $pizza->id }}">Delete</button>
-                                            </td>
-
-                                            <!-- Modal -->
+                                                    data-target="#exampleModal{{ $pizza->id }}">Delete</button></td>
+                                            <!-- Modal bos delete-->
                                             <div class="modal fade" id="exampleModal{{ $pizza->id }}" tabindex="-1"
-                                                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <form action="{{ route('pizza.destroy', $pizza->id) }}" method="post">
-                                                    @csrf @method('DELETE')
-                                                    <div class="modal-dialog" role="document">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">Delete
-                                                                    Comfirmation
-                                                                </h5>
+                                                                    confirmation</h5>
                                                                 <button type="button" class="close"
                                                                     data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Are you sure baby?
+                                                                Are you sure ?
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
@@ -110,10 +93,12 @@
                                             </div>
                                         </tr>
                                     @endforeach
-                                @else
 
+                                @else
                                     <p>No pizza to show</p>
                                 @endif
+
+
                             </tbody>
                         </table>
                         {{ $pizzas->links() }}

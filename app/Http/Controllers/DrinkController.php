@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Drink;
 use App\Http\Requests\DrinkStoreRequest;
+use App\Http\Requests\DrinkUpdateRequest;
 use Illuminate\Http\Request;
 
 class DrinkController extends Controller
@@ -15,7 +17,8 @@ class DrinkController extends Controller
      */
     public function index()
     {
-        return view('drink.index');
+        $drinks = Drink::paginate(5);
+        return view('drink.index',compact('drinks'));
     }
 
     /**
@@ -68,7 +71,8 @@ class DrinkController extends Controller
      */
     public function edit($id)
     {
-        //
+        $drink = Drink::find($id);
+        return view('drink.edit',compact('drink'));
     }
 
     /**
@@ -78,9 +82,27 @@ class DrinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DrinkUpdateRequest $request, $id)
     {
-        //
+       $drink = Drink::find($id);
+        
+       if ($request->has('image')){
+           $path = $request->image->store('public/drink');
+       }else{
+         $path = $drink->image;
+       }
+ 
+       $drink->fill($request->input());
+       $drink->name = $request->name;
+       $drink->description = $request->description;
+       $drink->small_drink_price = $request->small_drink_price;
+       $drink->medium_drink_price = $request->medium_drink_price;
+       $drink->large_drink_price = $request->large_drink_price;
+       $drink->category = $request->category;
+       $drink->image = $path;
+       $drink->save();
+ 
+       return redirect()->route('drink.index')->with('message','Drink updated successfully!');
     }
 
     /**
@@ -91,6 +113,7 @@ class DrinkController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Drink::find($id) -> delete();
+        return redirect()->route('drink.index')->with('message','Drink updated successfully!');
     }
 }

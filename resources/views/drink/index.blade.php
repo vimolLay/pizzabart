@@ -4,9 +4,13 @@
     <div class="container">
         <div class="row justify-content-center">
 
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header"> All Drinks</div>
+                    <div class="card-header"> All Drinks
+                        <a href="{{ route('drink.create') }}">
+                            <button class="btn btn-success" style="float: right">Add drink</button>
+                        </a>
+                    </div>
 
                     <div class="card-body">
                         @if (session('message'))
@@ -18,31 +22,76 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">S.Price</th>
+                                    <th scope="col">M.Price</th>
+                                    <th scope="col">L.Price</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
                                 </tr>
+
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td colspan="2">Larry the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
+                                @if (count($drinks) > 0)
+
+                                    @foreach ($drinks as $key => $drink)
+                                        <tr>
+                                            <th scope="row">{{ $key + 1 }}</th>
+                                            <td><img src="{{ Storage::url($drink->image) }}" width="80"></td>
+                                            <td>{{ $drink->name }}</td>
+                                            <td>{{ $drink->description }}</td>
+                                            <td>{{ $drink->category }}</td>
+                                            <td>{{ $drink->small_drink_price }}</td>
+                                            <td>{{ $drink->medium_drink_price }}</td>
+                                            <td>{{ $drink->large_drink_price }}</td>
+                                            <td><a href="{{ route('drink.edit', $drink->id) }}"><button
+                                                        class="btn btn-primary">Edit</button></a></td>
+                                            <td><button class="btn btn-danger" data-toggle="modal"
+                                                    data-target="#exampleModal{{ $drink->id }}">Delete</button></td>
+
+                                            </button>
+                                            </td>
+                                            {{-- Modal bos delete --}}
+                                            <div class="modal fade" id="exampleModal{{ $drink->id }}" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <form action="{{ route('drink.destroy', $drink->id) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Delete
+                                                                    confirmation</h5>
+                                                                <button type="button" class="close"
+                                                                    data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Are you sure baby?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-danger">Delete
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </tr>
+                                    @endforeach
+
+                                @else
+                                    <p> NO PIZZA TODAY</p>
+                                @endif
                             </tbody>
                         </table>
+                        {{ $drinks->links() }}
                     </div>
                 </div>
 
