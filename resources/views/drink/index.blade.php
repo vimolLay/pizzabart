@@ -3,8 +3,37 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-header">My Drink</div>
 
-            <div class="col-md-12">
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <a href="{{ route('drink.index') }}" class="list-group-item list-group-item-action"> View Drink
+                            </a>
+                            <a href="{{ route('drink.create') }}" class="list-group-item list-group-item-action">Create
+                                Drink
+                            </a>
+                            <a href="{{ route('user.order') }}" class="list-group-item list-group-item-action"> User Order
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+                @if (count($errors) > 0)
+                    <div class="card mt-5">
+                        <div class="card-body">
+                            <div class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                    <p> {{ $error }}
+                                    <p>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            </div>
+
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header"> All Drinks
                         <a href="{{ route('drink.create') }}">

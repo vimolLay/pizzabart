@@ -26,9 +26,9 @@
                                     <th scope="col">Phone/Email</th>
                                     <th scope="col">Date/Time</th>
                                     <th scope="col">Pizza</th>
-                                    <th scope="col">Small Pizza</th>
-                                    <th scope="col">Medium Pizza</th>
-                                    <th scope="col">Large Pizza</th>
+                                    <th scope="col">Small size</th>
+                                    <th scope="col">Medium size</th>
+                                    <th scope="col">Large size</th>
                                     <th scope="col">Total($)</th>
                                     <th scope="col">Message</th>
                                     <th scope="col">Status</th>
@@ -42,15 +42,17 @@
                                 @foreach ($orders as $order)
                                     <tr>
 
-                                        <td>{{ $order->user->name }}</td>
+                                        <td>{{ $order->user->name }} </td>
                                         <td>{{ $order->user->email }} <br> {{ $order->phone }}</td>
                                         <td>{{ $order->date }}/{{ $order->time }}</td>
-                                        <td>{{ $order->pizza->name }}</td>
-                                        <td>{{ $order->small_pizza }}</td>
+                                        <td>{{ $order->pizza->name }} </td>
+                                        <td>{{ $order->small_pizza }} </td>
                                         <td>{{ $order->medium_pizza }}</td>
                                         <td>{{ $order->large_pizza }}</td>
                                         <td>
                                             ${{ $order->pizza->small_pizza_price * $order->small_pizza + $order->pizza->medium_pizza_price * $order->medium_pizza + $order->pizza->large_pizza_price * $order->large_pizza }}
+                                            +
+                                            ${{ $order->drink->small_drink_price * $order->small_pizza + $order->pizza->medium_drink_price * $order->medium_pizza + $order->pizza->large_drink_price * $order->large_pizza }}
                                         </td>
                                         <td>{{ $order->body }}</td>
                                         <td>{{ $order->status }}</td>

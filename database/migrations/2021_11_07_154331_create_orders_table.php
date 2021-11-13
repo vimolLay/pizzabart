@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('date');
             $table->string('time');
             $table->integer('pizza_id');
-            $table->string('small_pizza')->default(0);
+            $table->string('small_pizza')->default(0) ;
             $table->string('medium_pizza')->default(0);
             $table->string('large_pizza')->default(0);
             $table->text('body');
