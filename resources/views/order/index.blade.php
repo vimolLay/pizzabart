@@ -51,8 +51,7 @@
                                         <td>{{ $order->large_pizza }}</td>
                                         <td>
                                             ${{ $order->pizza->small_pizza_price * $order->small_pizza + $order->pizza->medium_pizza_price * $order->medium_pizza + $order->pizza->large_pizza_price * $order->large_pizza }}
-                                            +
-                                            ${{ $order->drink->small_drink_price * $order->small_pizza + $order->pizza->medium_drink_price * $order->medium_pizza + $order->pizza->large_drink_price * $order->large_pizza }}
+
                                         </td>
                                         <td>{{ $order->body }}</td>
                                         <td>{{ $order->status }}</td>
