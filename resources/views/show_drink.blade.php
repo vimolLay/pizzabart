@@ -9,19 +9,19 @@
 
                     <div class="card-body">
                         @if (Auth::check())
-                            <form action="{{ route('order.store') }}" method="post"> @csrf
+                            <form action="{{ route('order_drink.store') }}" method="post"> @csrf
                                 <div class="form-group text-center">
                                     <p> Name: {{ auth()->user()->name }}</p>
                                     <p> Email: {{ auth()->user()->email }}</p>
                                     <p> Phone number: <input type="number" class="form-control" name="phone"></p>
-                                    <p> Small pizza order: <input type="number" class="form-control" name="small_pizza"
+                                    <p> Small drink order: <input type="number" class="form-control" name="small_drink"
                                             value="0"></p>
-                                    <p> Medium pizza order: <input type="number" class="form-control" name="medium_pizza"
+                                    <p> Medium drink order: <input type="number" class="form-control" name="medium_drink"
                                             value="0"></p>
-                                    <p> Large pizza order: <input type="number" class="form-control" name="large_pizza"
+                                    <p> Large drink order: <input type="number" class="form-control" name="large_drink"
                                             value="0"></p>
 
-                                    <p> <input type="hidden" name="pizza_id" value="{{ $pizza->id }}"></p>
+                                    <p> <input type="hidden" name="drink_id" value="{{ $drink->id }}"></p>
                                     <p> <input type="date" name="date" class="form-control" required> </p>
                                     <p> <input type="time" name="time" class="form-control" required></p>
                                     <p> <textarea name="body" class="form-control" required></textarea></p>
@@ -52,25 +52,25 @@
 
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Pizza</div>
+                    <div class="card-header">Drink</div>
 
                     <div class="card-body">
 
 
-                        <img src="{{ Storage::url($pizza->image) }}" class="img-thumbnail" style="width:100%;">
+                        <img src="{{ Storage::url($drink->image) }}" class="img-thumbnail" style="width:100%;">
                         <p>
-                        <h3>{{ $pizza->name }} </h3>
+                        <h3>{{ $drink->name }} </h3>
                         </p>
 
-                        <p>Pizza description : {{ $pizza->description }}</p>
+                        <p>Drink description : {{ $drink->description }}</p>
                         <p>
-                            Small Pizza Price: ${{ $pizza->small_pizza_price }}
+                            Small Drink Price: ${{ $drink->small_drink_price }}
                         </p>
                         <p>
-                            Medium Pizza Price: ${{ $pizza->medium_pizza_price }}
+                            Medium Drink Price: ${{ $drink->medium_drink_price }}
                         </p>
                         <p>
-                            Large Pizza Price : ${{ $pizza->large_pizza_price }}
+                            Large Drink Price : ${{ $drink->large_drink_price }}
                         </p>
 
 

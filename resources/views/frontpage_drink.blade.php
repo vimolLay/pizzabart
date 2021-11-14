@@ -9,14 +9,28 @@
 
                     <div class="card-body">
 
-                        <form action="{{ route('frontpage') }}" method="get">
+                        <form action="{{ route('frontpage_drink') }}" method="get">
                             <a href="/" class="list-group-item list-group-item-action"> back </a>
-                            <input type="submit" class="list-group-item list-group-item-action" value="Vegetarian"
+                            <input type="submit" class="list-group-item list-group-item-action" value="Alcoholic"
                                 name="category">
-                            <input type="submit" class="list-group-item list-group-item-action" value="Nonvegetarian"
+
+                            <input type="submit" class="list-group-item list-group-item-action" value="Coffee"
                                 name="category">
-                            <input type="submit" class="list-group-item list-group-item-action" value="Tradition"
+
+                            <input type="submit" class="list-group-item list-group-item-action" value="Drinking Water"
                                 name="category">
+
+                            <input type="submit" class="list-group-item list-group-item-action" value="Energy Drink"
+                                name="category">
+
+                            <input type="submit" class="list-group-item list-group-item-action" value="Juice"
+                                name="category">
+
+                            <input type="submit" class="list-group-item list-group-item-action" value="Soft drink"
+                                name="category">
+                            <input type="submit" class="list-group-item list-group-item-action" value="Tea" name="category">
+
+
                         </form>
                     </div>
                 </div>
@@ -24,24 +38,23 @@
 
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">({{ count($pizzas) }}) Foods & Drinks
+                    <div class="card-header"> ({{ count($drinks) }}) Drinks
                     </div>
 
                     <div class="card-body">
                         <div class="row">
-
-                            @forelse ($pizzas as $pizza)
+                            @forelse ($drinks as $drink)
                                 <div class="col-md-4 mt-2 text-center " style="border: 1px solid #ccc;">
-                                    <img src="{{ Storage::url($pizza->image) }}" class="img-thumbnail"
+                                    <img src="{{ Storage::url($drink->image) }}" class="img-thumbnail"
                                         style="width:100%;">
-                                    <p>{{ $pizza->name }}</p>
-                                    <p>{{ $pizza->description }}</p>
-                                    <a href="{{ route('pizza.show', $pizza->id) }}"> {{-- Name route ng yo pi web app name --}}
+                                    <p>{{ $drink->name }}</p>
+                                    <p>{{ $drink->description }}</p>
+                                    <a href="{{ route('drink.show', $drink->id) }}"> {{-- Name route ng yo pi web app name --}}
                                         <button class="btn btn-danger mb-1">Order Now!</button>
                                     </a>
                                 </div>
                             @empty
-                                <p> NO PIZZA </p>
+                                <p> NO DRINK TODAY </p>
                             @endforelse
 
 

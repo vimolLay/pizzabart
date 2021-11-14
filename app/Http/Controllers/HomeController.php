@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Order_drink;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -28,6 +28,7 @@ class HomeController extends Controller
             return redirect()->route('user.order');
         }
         $orders = Order::latest()->where('user_id',auth()->user()->id)->get();
-        return view('home',compact('orders'));
+        $orders_drink = Order_drink::latest()->where('user_id',auth()->user()->id)->get();
+        return view('home',compact('orders','orders_drink'));
     }
 }

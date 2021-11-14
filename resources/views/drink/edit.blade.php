@@ -50,14 +50,13 @@
                                 <label for="description">Category</label>
                                 <select class="form-control" name="category">
                                     <option value=""></option>
-                                    <option value="Protein_drink">Protein Drink</option>
-                                    <option value="drinking_water">Drinking Water</option>
-                                    <option value="soft_drink">Soft Drink</option>
+                                    <option value="drinking water">Drinking Water</option>
+                                    <option value="soft drink">Soft Drink</option>
                                     <option value="coffee">Coffee</option>
                                     <option value="juice">Juice</option>
                                     <option value="alcoholic">Alcoholic</option>
                                     <option value="tea">Tea</option>
-                                    <option value="energy_drink">Energy Drink</option>
+                                    <option value="energy drink">Energy Drink</option>
                                 </select>
                             </div>
                             <div class="form-group">

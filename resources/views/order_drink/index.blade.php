@@ -50,7 +50,7 @@
                                         <td>{{ $order_drink->body }}</td>
                                         <td>{{ $order_drink->status }}</td>
 
-                                        <form action="" method="post">
+                                        <form action="{{ route('order_drink.status', $order_drink->id) }}" method="post">
                                             @csrf
                                             <td>
                                                 <input name="status" type="submit" value="accepted"

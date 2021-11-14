@@ -25,6 +25,8 @@ class CreateOrderDrinksTable extends Migration
             $table->text('body');
             $table->string('status')->default('pending');
             $table->timestamps();
+            
+            
         });
     }
 

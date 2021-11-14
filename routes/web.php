@@ -18,9 +18,16 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\FirstpageController::class, 'index'])->name('firstpage');
 
-Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('frontpage');
+    //pizza
+Route::get('/pizza', [App\Http\Controllers\FrontendController::class, 'index'])->name('frontpage');
 Route::get('/pizza/{id}', [App\Http\Controllers\FrontendController::class, 'show'])->name('pizza.show'); //ah name ng vea jol tv controller
+    //drink
+Route::get('/drink', [App\Http\Controllers\FrontendDrinkController::class, 'index'])->name('frontpage_drink');
+Route::get('/drink/{id}', [App\Http\Controllers\FrontendDrinkController::class, 'show'])->name('drink.show');
+
+Route::post('/order_drink/store', [App\Http\Controllers\FrontendDrinkController::class, 'store'])->name('order_drink.store'); //
 Route::post('/order/store', [App\Http\Controllers\FrontendController::class, 'store'])->name('order.store'); //
 
 
@@ -45,6 +52,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function() {
     Route::post('/order/{id}/status', [App\Http\Controllers\UserOrderController::class, 'changeStatus'])->name('order.status');
         //user order drink
     Route::get('/user/order_drink', [App\Http\Controllers\UserOrderDrinkController::class, 'index'])->name('user.order_drink');
+    Route::post('/order_drink/{id}/status', [App\Http\Controllers\UserOrderDrinkController::class, 'changeStatus'])->name('order_drink.status');
+
 
     //Display all customers
     Route::get('/customers', [App\Http\Controllers\UserOrderController::class, 'customers'])->name('customers');

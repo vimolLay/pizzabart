@@ -84,4 +84,11 @@ class UserOrderDrinkController extends Controller
     {
         //
     }
+
+    public function changeStatus(Request $request,$id) {
+        
+        $order_drink = Order_drink::find($id);
+        Order_drink::where('id',$id)->update(['status'=>$request->status]);
+        return back();
+    }
 }
