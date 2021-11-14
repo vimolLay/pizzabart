@@ -33,6 +33,7 @@
 
                     <div class="card-body">
                         <div class="row">
+
                             @forelse ($pizzas as $pizza)
                                 <div class="col-md-4 mt-2 text-center " style="border: 1px solid #ccc;">
                                     <img src="{{ Storage::url($pizza->image) }}" class="img-thumbnail"
@@ -44,8 +45,7 @@
                                     </a>
                                 </div>
                             @empty
-                                <p> No Pizza Today</p>
-
+                                <p> NO PIZZA </p>
                             @endforelse
 
 

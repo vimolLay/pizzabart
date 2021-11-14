@@ -40,13 +40,12 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function() {
     Route::put('/drink/{id}/update', [App\Http\Controllers\DrinkController::class, 'update'])->name('drink.update');
     Route::delete('/drink/{id}/delete', [App\Http\Controllers\DrinkController::class, 'destroy'])->name('drink.destroy');
 
-
-
-    
-
-    //user order
+    //user order pizza
     Route::get('/user/order', [App\Http\Controllers\UserOrderController::class, 'index'])->name('user.order');
     Route::post('/order/{id}/status', [App\Http\Controllers\UserOrderController::class, 'changeStatus'])->name('order.status');
+        //user order drink
+    Route::get('/user/order_drink', [App\Http\Controllers\UserOrderDrinkController::class, 'index'])->name('user.order_drink');
+
     //Display all customers
     Route::get('/customers', [App\Http\Controllers\UserOrderController::class, 'customers'])->name('customers');
 

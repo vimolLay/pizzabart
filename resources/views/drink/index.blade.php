@@ -14,7 +14,8 @@
                             <a href="{{ route('drink.create') }}" class="list-group-item list-group-item-action">Create
                                 Drink
                             </a>
-                            <a href="{{ route('user.order') }}" class="list-group-item list-group-item-action"> User Order
+                            <a href="{{ route('user.order_drink') }}" class="list-group-item list-group-item-action"> User
+                                Order
                             </a>
                         </ul>
                     </div>
