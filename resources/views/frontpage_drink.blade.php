@@ -75,12 +75,12 @@
         }
 
         a.list-group-item:hover {
-            background-color: red;
+            background-color: rgb(25, 248, 136);
             color: #ffffff;
         }
 
         .card-header {
-            background-color: red;
+            background-color: rgb(25, 248, 136);
             color: #ffffff;
             font-size: 18px;
         }
